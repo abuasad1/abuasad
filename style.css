@@ -1,0 +1,405 @@
+/* ═══════════════════════════════════════════════════
+   PANDA COMMERCE — style.css  (Bootstrap overrides)
+   ═══════════════════════════════════════════════════
+   Bootstrap handles layout, grid, spacing, cards,
+   carousel, navbar collapse, and responsive breakpoints.
+   This file only customises colours, typography, and
+   component-specific details that Bootstrap does not
+   cover out of the box.
+
+   TABLE OF CONTENTS
+   1. Brand colours & root tokens
+   2. Buttons  (btn-panda, btn-outline-panda)
+   3. Navbar overrides
+   4. Hero / Carousel
+   5. Categories
+   6. Product cards
+   7. Newsletter section
+   8. Footer
+═══════════════════════════════════════════════════ */
+
+
+/* ───────────────────────────────────────────────────
+   1. BRAND COLOURS & ROOT TOKENS
+─────────────────────────────────────────────────── */
+:root {
+  --panda-orange:       #6d496d;   /* primary accent          */
+  --panda-orange-dark:  #1308000c;   /* hover state             */
+  --panda-orange-light: #e9bae3;   /* tinted backgrounds      */
+  --panda-text:         #111111;
+  --panda-muted:        #666666;
+  --panda-border:       #f0f0f0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  color: var(--panda-text);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+/* ───────────────────────────────────────────────────
+   2. BUTTONS
+─────────────────────────────────────────────────── */
+
+/* Filled orange button */
+.btn-panda {
+  background-color: var(--panda-orange);
+  color: #ffffff;
+  border: 2px solid var(--panda-orange);
+  font-weight: 600;
+  border-radius: 6px;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+.btn-panda:hover,
+.btn-panda:focus {
+  background-color: var(--panda-orange-dark);
+  border-color: var(--panda-orange-dark);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* Outline orange button */
+.btn-outline-panda {
+  background-color: transparent;
+  color: var(--panda-orange);
+  border: 2px solid var(--panda-orange);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.btn-outline-panda:hover,
+.btn-outline-panda:focus {
+  background-color: var(--panda-orange);
+  color: #ffffff;
+  border-color: var(--panda-orange);
+}
+
+
+/* ───────────────────────────────────────────────────
+   3. NAVBAR OVERRIDES
+─────────────────────────────────────────────────── */
+.navbar {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* Logo height already set via HTML height attr;
+   this protects aspect ratio */
+.navbar-brand img {
+  height: 40px;      /* IMAGE: images/logo.png */
+  width: auto;
+  object-fit: contain;
+}
+
+.nav-link {
+  color: #444444 !important;
+  font-weight: 500;
+  padding: 6px 14px !important;
+  border-radius: 6px;
+  transition: color 0.2s, background-color 0.2s;
+}
+.nav-link:hover,
+.nav-link.active {
+  color: var(--panda-orange) !important;
+  background-color: var(--panda-orange-light);
+}
+
+/* Heart / cart icon links */
+.nav-icon-link {
+  color: #444444;
+  font-size: 20px;
+  transition: color 0.2s;
+  text-decoration: none;
+}
+.nav-icon-link:hover { color: var(--panda-orange); }
+
+/* Cart badge */
+.cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background-color: var(--panda-orange);
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  min-width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+
+/* ───────────────────────────────────────────────────
+   4. HERO / CAROUSEL
+─────────────────────────────────────────────────── */
+.hero-section {
+  background-color: var(--panda-orange-light);
+  overflow: hidden;
+}
+
+/* Make carousel full-width inside the section */
+.hero-section .carousel { width: 100%; }
+
+.hero-row {
+  min-height: 480px;
+  padding: 56px 0 72px;  /* extra bottom for indicators */
+}
+
+/* Slide text */
+.hero-title {
+  font-size: clamp(30px, 4.5vw, 50px);
+  font-weight: 800;
+  color: var(--panda-text);
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+.hero-desc {
+  color: var(--panda-muted);
+  font-size: 15px;
+  max-width: 400px;
+  margin-bottom: 20px;
+  line-height: 1.65;
+}
+.hero-price {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--panda-orange);
+  margin-bottom: 28px;
+}
+
+/* Hero product image
+   IMAGE SLOTS:
+     images/banner-images/tv.png
+     images/banner-images/headphone.png
+     images/banner-images/xbox.png  */
+.hero-img {
+  max-height: 360px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.12));
+}
+
+/* Custom prev/next control buttons */
+.carousel-control-prev,
+.carousel-control-next {
+  width: 48px;
+  height: 48px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  opacity: 1;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.carousel-control-prev { left: 16px; }
+.carousel-control-next { right: 16px; }
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  background-color: var(--panda-orange);
+  border-color: var(--panda-orange);
+}
+
+.carousel-control-prev-icon-custom,
+.carousel-control-next-icon-custom {
+  font-size: 18px;
+  color: #444444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.carousel-control-prev:hover .carousel-control-prev-icon-custom,
+.carousel-control-next:hover .carousel-control-next-icon-custom {
+  color: #ffffff;
+}
+
+/* Dot indicators */
+.carousel-indicators-custom {
+  bottom: 18px;
+}
+.carousel-indicators-custom [data-bs-slide-to] {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #cccccc;
+  border: none;
+  opacity: 1;
+  transition: background-color 0.2s, width 0.2s, border-radius 0.2s;
+}
+.carousel-indicators-custom [data-bs-slide-to].active {
+  background-color: var(--panda-orange);
+  width: 26px;
+  border-radius: 5px;
+}
+
+
+/* ───────────────────────────────────────────────────
+   5. CATEGORIES
+─────────────────────────────────────────────────── */
+.section-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--panda-text);
+}
+
+/* Category item — centred column */
+.cat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  transition: transform 0.2s;
+}
+.cat-item:hover { transform: translateY(-4px); }
+
+/* Circle image
+   IMAGE SLOTS:
+     images/categories/watch.png
+     images/categories/bag.png
+     images/categories/shoes.png  */
+.cat-img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 50%;
+  background-color: #f3f4f6;
+  border: 3px solid #f3f4f6;
+  transition: border-color 0.2s;
+}
+.cat-item:hover .cat-img { border-color: var(--panda-orange); }
+
+.cat-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--panda-text);
+  text-align: center;
+}
+
+
+/* ───────────────────────────────────────────────────
+   6. PRODUCT CARDS
+─────────────────────────────────────────────────── */
+.product-card {
+  border: 1px solid var(--panda-border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: box-shadow 0.25s ease, transform 0.2s ease;
+}
+.product-card:hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.10);
+  transform: translateY(-4px);
+}
+
+/* Image container — fixed height so cards stay level */
+.product-img-wrap {
+  width: 100%;
+  height: 220px;
+  background-color: #f8f8f8;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Product image
+   IMAGE SLOTS (Shoes):
+     images/shoes/shoe-1.png
+     images/shoes/shoe-2.png
+     images/shoes/shoe-3.png
+   IMAGE SLOTS (Bags):
+     images/bags/bag-1.png
+     images/bags/bag-2.png
+     images/bags/bag-3.png  */
+.product-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.product-card:hover .product-img { transform: scale(1.04); }
+
+.product-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--panda-text);
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+.product-desc {
+  font-size: 13px;
+  line-height: 1.55;
+}
+.product-price {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--panda-text);
+}
+
+
+/* ───────────────────────────────────────────────────
+   7. NEWSLETTER
+─────────────────────────────────────────────────── */
+.newsletter-section {
+  background: linear-gradient(135deg, var(--panda-orange-light) 0%, #fff8f4 100%);
+  border-top: 1px solid #fde8d8;
+  border-bottom: 1px solid #fde8d8;
+}
+
+.newsletter-input {
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 15px;
+  padding: 11px 16px;
+  transition: border-color 0.2s;
+  max-width: 320px;
+}
+.newsletter-input:focus {
+  border-color: var(--panda-orange);
+  box-shadow: 0 0 0 3px rgba(249,115,22,0.15);
+  outline: none;
+}
+
+
+/* ───────────────────────────────────────────────────
+   8. FOOTER
+─────────────────────────────────────────────────── */
+.footer {
+  background-color: #111111;
+}
+.footer p {
+  color: #888888;
+  font-size: 13px;
+}
+
+
+/* ───────────────────────────────────────────────────
+   RESPONSIVE TWEAKS
+   (Bootstrap breakpoints handle most of it)
+─────────────────────────────────────────────────── */
+
+/* Stack hero on mobile */
+@media (max-width: 991.98px) {
+  .hero-row {
+    flex-direction: column-reverse;
+    padding: 36px 0 64px;
+    min-height: auto;
+    text-align: center;
+  }
+  .hero-desc { margin-left: auto; margin-right: auto; }
+  .hero-img  { max-height: 220px; margin-bottom: 20px; }
+}
+
+/* Smaller category circles on mobile */
+@media (max-width: 575.98px) {
+  .cat-img { width: 90px; height: 90px; }
+  .product-img-wrap { height: 180px; }
+}
